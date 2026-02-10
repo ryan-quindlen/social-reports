@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TEMPLATE: Update title for each campaign -->
+<title>Campaign Report | Zapier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFDF7;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F9F7F3;
+    --border: #E8E4DE;
+    --border-light: #F0EDE8;
+    --text: #2D3436;
+    --text-secondary: #636E72;
+    --text-muted: #A0A4A8;
+    --orange: #FF4A00;
+    --orange-light: #FFF0E8;
+    --orange-dark: #E04300;
+    --green: #00B953;
+    --green-light: #E6F9EF;
+    --blue: #3B82F6;
+    --blue-light: #EFF6FF;
+    --purple: #8B5CF6;
+    --gold: #D4A017;
+    --gold-light: #FFF8E1;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .zapier-mark {
+    width: 44px;
+    height: 44px;
+    background: var(--orange);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .zapier-mark svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .header-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .sb-logo {
+    height: 64px;
+    opacity: 0.9;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  /* ─── STAT CARDS ─── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stat-card.highlight {
+    border-color: var(--orange);
+    background: var(--orange-light);
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .stat-card.highlight .stat-value {
+    color: var(--orange);
+  }
+
+  .stat-unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* ─── HERO POST ─── */
+  .hero-post {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--orange);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .hero-author {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .hero-role {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .hero-quote {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text);
+    padding: 20px 24px;
+    background: var(--bg-subtle);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .hero-stat {
+    text-align: center;
+    padding: 16px;
+    background: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+  }
+
+  .hero-stat.accent {
+    background: var(--orange-light);
+  }
+
+  .hero-stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .hero-stat.accent .hero-stat-value {
+    color: var(--orange);
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── ICP / AUDIENCE ─── */
+  .icp-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .icp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .icp-big-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    min-width: 80px;
+  }
+
+  .icp-description {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .icp-description span {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  /* ─── LOGO WALL ─── */
+  .logo-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .logo-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: default;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .logo-tag:hover {
+    border-color: var(--orange);
+    box-shadow: var(--shadow);
+  }
+
+  .logo-tag .tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .logo-tag:hover .tip { display: block; }
+
+  .logo-tag.tier1 {
+    border-color: var(--orange);
+    background: var(--orange-light);
+  }
+
+  .logo-tag.multi {
+    border-color: var(--purple);
+    background: #F3EEFF;
+  }
+
+  /* ─── SIGNAL LIST ─── */
+  .signal-list {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .signal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .signal-item:last-child { border-bottom: none; }
+
+  .signal-icon {
+    font-size: 18px;
+    line-height: 1.4;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .signal-bold {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ─── TWO-COL LAYOUT ─── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ─── CAROUSEL ─── */
+  .carousel-wrapper {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-subtle);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    position: relative;
+    cursor: zoom-in;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .carousel-overlay {
+    display: none; /* Hidden by default per template convention */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+  }
+
+  .carousel-caption {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .carousel-metrics {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    opacity: 0.85;
+  }
+
+  .carousel-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    pointer-events: none;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: background 0.2s;
+  }
+
+  .carousel-arrow:hover { background: white; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: var(--orange);
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .testimonial-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .imessage-bubble {
+    background: #E9E9EB;
+    padding: 14px 18px;
+    border-radius: 18px 18px 18px 4px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 90%;
+  }
+
+  .imessage-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding-left: 4px;
+  }
+
+  /* ─── FOLLOWER CARDS ─── */
+  .follower-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .follower-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .follower-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    cursor: zoom-in;
+  }
+
+  .follower-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+
+  .follower-card-info {
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .follower-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .follower-bump {
+    font-weight: 700;
+    color: var(--green);
+    font-size: 14px;
+  }
+
+  .follower-context {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 32px 0;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: none; }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+
+  .carousel-slide { cursor: zoom-in; }
+
+  /* ─── COMMENTS SCROLL ─── */
+  .comments-wrapper {
+    position: relative;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .comments-scroll-area {
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Edge fade masks */
+  .comments-scroll-area::before,
+  .comments-scroll-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 2;
+    pointer-events: none;
+  }
+    .comments-scroll-area::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), transparent);
+  }
+  .comments-scroll-area::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), transparent);
+  }
+
+  .comments-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    cursor: grab;
+  }
+
+  .comments-strip.dragging { cursor: grabbing; }
+
+  .comments-strip::-webkit-scrollbar { height: 0; }
+
+  .comment-card {
+    flex: 0 0 280px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+  }
+
+  .comment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .comment-card img {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .follower-grid { grid-template-columns: 1fr; }
+    .icp-highlights { grid-template-columns: 1fr; }
+    .sb-logo { height: 48px; }
+    .header-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: HEADER (REQUIRED)                                 -->
+  <!-- Update: title, subtitle (date range), icon SVG, logo image -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="zapier-mark">
+          <!-- TEMPLATE: Replace SVG with campaign-appropriate icon -->
+          <!-- Default: Zapier bolt. Dan-SB used a football. -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div>
+          <!-- TEMPLATE: Campaign title -->
+          <div class="header-title">Campaign Title Here</div>
+          <!-- TEMPLATE: Date range -->
+          <div class="header-subtitle">Month DD &ndash; DD, YYYY</div>
+        </div>
+      </div>
+      <!-- TEMPLATE: Optional campaign/event logo. Delete if not needed. -->
+      <img src="assets/campaign-logo.png" class="sb-logo" alt="Campaign Logo">
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: AGGREGATE STATS (REQUIRED)                        -->
+  <!-- Update: stat values, section label, section title           -->
+  <!-- Grid is 4 columns. Add/remove stat-cards as needed.        -->
+  <!-- Use data-target for count-up animation.                    -->
+  <!-- Use data-format="compact" for large numbers (149.8K+).    -->
+  <!-- Use data-suffix="+" or data-suffix="%" as needed.          -->
+  <!-- Mark one card with class="highlight" for accent styling.   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Combined Performance</div>
+    <div class="section-title">LinkedIn: Execs + Brand accounts</div>
+    <div class="stat-strip stagger">
+      <div class="stat-card">
+        <div class="stat-value"><span class="count-up" data-target="0" data-format="compact" data-suffix="+">0</span></div>
+        <div class="stat-unit">Impressions</div>
+      </div>
+      <div class="stat-card highlight">
+        <div class="stat-value"><span class="count-up" data-target="0">0</span></div>
+        <div class="stat-unit">Engagements</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value"><span class="count-up" data-target="0">0</span></div>
+        <div class="stat-unit">Link Clicks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$<span class="count-up" data-target="0">0</span></div>
+        <div class="stat-unit">Brand EMV</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: TOP PERFORMER (OPTIONAL)                          -->
+  <!-- The hero post. Delete entire section if not needed.        -->
+  <!-- Update: avatar initials, author, role, quote, stats.       -->
+  <!-- Comment Reel lives INSIDE this section to avoid borders.   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="section animate-in">
+    <div class="section-label">Top Performer</div>
+    <div class="section-title">Hero post headline here</div>
+    <div class="hero-post">
+      <div class="hero-post-header">
+        <!-- TEMPLATE: 2-letter initials, e.g., WF for Wade Foster -->
+        <div class="hero-avatar">XX</div>
+        <div>
+          <div class="hero-author">Author Name</div>
+          <div class="hero-role">Title, Zapier</div>
+        </div>
+      </div>
+      <div class="hero-quote">
+        Post text or excerpt goes here.
+      </div>
+      <div class="hero-stats stagger">
+        <div class="hero-stat">
+          <div class="hero-stat-value"><span class="count-up" data-target="0">0</span></div>
+          <div class="hero-stat-label">Likes</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value"><span class="count-up" data-target="0">0</span></div>
+          <div class="hero-stat-label">Comments</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value"><span class="count-up" data-target="0">0</span></div>
+          <div class="hero-stat-label">Reposts</div>
+        </div>
+        <div class="hero-stat accent">
+          <div class="hero-stat-value"><span class="count-up" data-target="0" data-suffix="%" data-decimals="0">0</span></div>
+          <div class="hero-stat-label">Engagement Rate</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:12px; font-size:13px; color:var(--text-muted);">
+        <!-- TEMPLATE: Impressions, publish date, content type -->
+        00,000 impressions &middot; Published Mon DD, YYYY &middot; Type
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SUBSECTION: COMMENT REEL (OPTIONAL)                    -->
+    <!-- Lives inside Top Performer to avoid border artifacts.  -->
+    <!-- Delete this entire comments-wrapper div if not needed. -->
+    <!-- Comment images are loaded via JS config below.         -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="comments-wrapper">
+      <div class="section-label">Comment Reel</div>
+      <div class="section-title" style="font-size: 20px; margin-bottom: 16px;">The people have spoken</div>
+      <div class="comments-scroll-area">
+        <div class="comments-strip" id="commentStrip"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: AUDIENCE QUALITY / ICP (OPTIONAL)                 -->
+  <!-- Delete entire section if no lead data available.           -->
+  <!-- Update: ICP percentages, logo wall tags, signal list.      -->
+  <!-- Logo tags: default, .tier1 (orange), .multi (purple).      -->
+  <!-- Each tag has a .tip tooltip with person + title.           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="section animate-in">
+    <div class="section-label">Audience Quality</div>
+    <div class="section-title">The right people are watching</div>
+
+    <div class="icp-highlights stagger">
+      <div class="icp-card">
+        <div class="icp-big-number"><span class="count-up" data-target="0" data-suffix="%">0</span></div>
+        <div class="icp-description">Senior-level viewers<span>Directors, VPs, C-suite across all impressions</span></div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-big-number"><span class="count-up" data-target="0" data-suffix="%">0</span></div>
+        <div class="icp-description">At companies with 1,000+ employees<span>Enterprise and mid-market accounts</span></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+      <!-- TEMPLATE: Update description of which post(s) leads came from -->
+      Enterprise logos that engaged
+    </div>
+    <div class="logo-wall">
+      <!-- TEMPLATE: Add logo-tag spans here. Classes: default, .tier1, .multi -->
+      <!-- Example:
+      <span class="logo-tag tier1">CompanyName<span class="tip">Person Name &middot; Title</span></span>
+      <span class="logo-tag multi">Company &times;4<span class="tip">4 engagers across teams</span></span>
+      <span class="logo-tag">CompanyName<span class="tip">Person Name &middot; Title</span></span>
+      -->
+    </div>
+
+    <ul class="signal-list">
+      <!-- TEMPLATE: Add signal-item li elements here. -->
+      <!-- Icons: ⚡ (multi-thread), 👑 (C-suite), 🎯 (ICP), 🏦 (enterprise) -->
+      <!-- Example:
+      <li class="signal-item">
+        <div class="signal-icon">&#9889;</div>
+        <span><span class="signal-bold">Company</span> engaged 4x across teams. Multi-thread buying signal.</span>
+      </li>
+      -->
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: BRAND SOCIAL / CAROUSEL (OPTIONAL)                -->
+  <!-- Delete entire section if no brand/meme posts to feature.   -->
+  <!-- Update: carousel slides, testimonial content.              -->
+  <!-- Each slide needs: img src, overlay caption, overlay metrics -->
+  <!-- Also update totalSlides in JS config and carousel dots.    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="section animate-in">
+    <div class="section-label">Brand Social</div>
+    <div class="section-title">Section title here</div>
+    <div class="two-col">
+      <!-- Carousel -->
+      <div>
+        <div class="carousel-wrapper" id="carousel">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- TEMPLATE: Add carousel-slide divs here. One per screenshot. -->
+            <!-- Example:
+            <div class="carousel-slide">
+              <img src="assets/post-screenshot.png" alt="Description">
+              <div class="carousel-overlay">
+                <div class="carousel-caption">Caption text</div>
+                <div class="carousel-metrics">
+                  <span>XX reactions</span>
+                  <span>XX comments</span>
+                </div>
+              </div>
+            </div>
+            -->
+          </div>
+          <div class="carousel-arrows">
+            <button class="carousel-arrow" onclick="moveCarousel(-1)">&#8249;</button>
+            <button class="carousel-arrow" onclick="moveCarousel(1)">&#8250;</button>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+          <!-- TEMPLATE: Add one carousel-dot button per slide -->
+          <!-- Example: <button class="carousel-dot active" onclick="goToSlide(0)"></button> -->
+        </div>
+      </div>
+
+      <!-- Testimonial (optional; delete if not needed) -->
+      <div class="testimonial-block">
+        <div class="testimonial-label">Organic Buzz</div>
+        <div class="imessage-bubble">
+          Testimonial quote goes here.
+        </div>
+        <div class="imessage-meta">
+          Attribution text here
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: FOLLOWER BUMP (OPTIONAL)                          -->
+  <!-- Delete entire section if no follower growth to feature.    -->
+  <!-- Update: section title, follower cards, context text.       -->
+  <!-- Images use aspect-ratio: 4/3 with object-position: 60%.   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="section animate-in">
+    <div class="section-label">Follower Growth</div>
+    <div class="section-title">Section title here</div>
+    <div class="follower-grid stagger">
+      <!-- TEMPLATE: Add follower-card divs here. One per person. -->
+      <!-- Example:
+      <div class="follower-card">
+        <img src="assets/person-followers.png" alt="Person follower growth">
+        <div class="follower-card-info">
+          <span class="follower-name">Person Name</span>
+          <span class="follower-bump">+000</span>
+        </div>
+      </div>
+      -->
+    </div>
+    <div class="follower-context">
+      Context text explaining the follower growth story.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: FOOTER (REQUIRED)                                  -->
+  <!-- Update: team name, recipient, date, data source.           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="footer">
+    <div class="footer-text">
+      <strong>Zapier Social</strong> &middot; Prepared for Recipient Name &middot; Month DD, YYYY &middot; Data from Ordinal LinkedIn Analytics
+    </div>
+  </div>
+
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="Expanded view">
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// REPORT CONFIGURATION
+// Update these values for each campaign. The rest of the JS
+// reads from this config automatically.
+// ═══════════════════════════════════════════════════════════════
+
+const REPORT_CONFIG = {
+  // Comment reel image filenames (in display order).
+  // Place images in assets/ folder. Leave empty array to disable reel.
+  comments: [
+    // 'comment-person1.png',
+    // 'comment-person2.png',
+  ],
+
+  // Number of carousel slides (must match carousel-slide divs above).
+  // Set to 0 if no carousel section.
+  carouselSlides: 0,
+};
+
+// ── LIGHTBOX ──
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+document.querySelectorAll('.carousel-slide').forEach(slide => {
+  slide.addEventListener('click', () => {
+    const img = slide.querySelector('img');
+    if (img) openLightbox(img.src);
+  });
+});
+
+document.querySelectorAll('.follower-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    if (img) openLightbox(img.src);
+  });
+});
+
+// ── INFINITE COMMENT REEL ──
+(function() {
+  const strip = document.getElementById('commentStrip');
+  if (!strip || REPORT_CONFIG.comments.length === 0) return;
+
+  const comments = REPORT_CONFIG.comments;
+
+  // Build 3 copies for seamless infinite scroll
+  function buildCards() {
+    let html = '';
+    for (let copy = 0; copy < 3; copy++) {
+      comments.forEach(src => {
+        html += '<div class="comment-card"><img src="assets/' + src + '" alt="comment"></div>';
+      });
+    }
+    strip.innerHTML = html;
+  }
+  buildCards();
+
+  // Start in the middle (copy 2 of 3)
+  const cardW = 280 + 12; // flex-basis + gap
+  const oneSetW = comments.length * cardW;
+  strip.scrollLeft = oneSetW;
+
+  // Seamless reposition when scroll stops (debounced)
+  let scrollTimer = null;
+  let isRepositioning = false;
+
+  strip.addEventListener('scroll', () => {
+    if (isRepositioning) return;
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      isRepositioning = true;
+      const pos = strip.scrollLeft;
+      if (pos >= oneSetW * 2) {
+        strip.scrollLeft = pos - oneSetW;
+      } else if (pos < oneSetW * 0.1) {
+        strip.scrollLeft = pos + oneSetW;
+      }
+      isRepositioning = false;
+    }, 80);
+  });
+
+  // Drag-to-scroll (desktop)
+  let isDragging = false;
+  let startX = 0;
+  let startScroll = 0;
+  let dragMoved = false;
+
+  strip.addEventListener('mousedown', e => {
+    isDragging = true;
+    dragMoved = false;
+    startX = e.pageX;
+    startScroll = strip.scrollLeft;
+    strip.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 3) dragMoved = true;
+    strip.scrollLeft = startScroll - dx;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    strip.classList.remove('dragging');
+  });
+
+  // Lightbox on click (only if not dragged)
+  strip.addEventListener('click', e => {
+    if (dragMoved) return;
+    const card = e.target.closest('.comment-card');
+    if (!card) return;
+    const img = card.querySelector('img');
+    if (img) openLightbox(img.src);
+  });
+})();
+
+// ── CAROUSEL ──
+let currentSlide = 0;
+const totalSlides = REPORT_CONFIG.carouselSlides;
+let autoplayInterval;
+
+function goToSlide(n) {
+  if (totalSlides === 0) return;
+  currentSlide = n;
+  document.getElementById('carouselTrack').style.transform = `translateX(-${n * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === n);
+  });
+  resetAutoplay();
+}
+
+function moveCarousel(dir) {
+  if (totalSlides === 0) return;
+  let next = currentSlide + dir;
+  if (next < 0) next = totalSlides - 1;
+  if (next >= totalSlides) next = 0;
+  goToSlide(next);
+}
+
+function startAutoplay() {
+  if (totalSlides === 0) return;
+  autoplayInterval = setInterval(() => moveCarousel(1), 4000);
+}
+
+function resetAutoplay() {
+  clearInterval(autoplayInterval);
+  startAutoplay();
+}
+
+if (totalSlides > 0) startAutoplay();
+
+// ── COUNT-UP ANIMATION ──
+function animateCountUp(el) {
+  const target = parseFloat(el.dataset.target);
+  if (target === 0) { el.textContent = '0'; return; }
+  const suffix = el.dataset.suffix || '';
+  const decimals = parseInt(el.dataset.decimals) || 0;
+  const format = el.dataset.format || '';
+  const duration = 1600;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    let current = target * ease;
+
+    if (format === 'compact') {
+      if (current >= 1000) {
+        el.textContent = (current / 1000).toFixed(current >= 10000 ? 0 : 1) + 'K' + suffix;
+      } else {
+        el.textContent = Math.round(current) + suffix;
+      }
+    } else if (decimals > 0) {
+      el.textContent = current.toFixed(decimals) + suffix;
+    } else {
+      el.textContent = Math.round(current).toLocaleString() + suffix;
+    }
+
+    if (progress < 1) requestAnimationFrame(update);
+  }
+
+  requestAnimationFrame(update);
+}
+
+// ── INTERSECTION OBSERVER ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      entry.target.querySelectorAll('.count-up:not(.counted)').forEach(el => {
+        el.classList.add('counted');
+        animateCountUp(el);
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.animate-in, .stagger').forEach(el => observer.observe(el));
+
+// Trigger first section immediately (already visible on load)
+setTimeout(() => {
+  document.querySelectorAll('.stagger').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+      el.querySelectorAll('.count-up:not(.counted)').forEach(c => {
+        c.classList.add('counted');
+        animateCountUp(c);
+      });
+    }
+  });
+}, 300);
+
+// ── SWIPE SUPPORT (mobile carousel) ──
+if (totalSlides > 0) {
+  let touchStartX = 0;
+  const carousel = document.getElementById('carousel');
+  if (carousel) {
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+    carousel.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
